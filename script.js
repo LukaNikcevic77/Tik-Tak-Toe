@@ -1,5 +1,9 @@
 const board = document.getElementById('board');
 const fields = document.getElementsByClassName('field');
+const roundFields = document.getElementsByClassName('rndC');
+const player1Scores = document.getElementsByClassName('p1Score');
+const player2Scores = document.getElementsByClassName('p2Score');
+const fieldsArray = [...fields];
 console.log(board);
 let gameBoard = {
 
@@ -83,7 +87,8 @@ let gameBoard = {
             if(gameBoard.hits == 2){
                 console.log("YEy we got diagonal win broski");
                 board.style.backgroundColor = "green";
-
+                disablePlaying();
+                gameController.updateScore(sign);
             }
             else {
                 console.log("We got dick broski");
@@ -91,8 +96,7 @@ let gameBoard = {
             }
         }
     }
-        
-        
+
           
             
     
@@ -105,10 +109,20 @@ let gameBoard = {
         return {name, wonRounds, playerSign};
 
     }
+
+    
+        const player1 = playerMaker("Marco", "x");
+    
+        const player2 = playerMaker("King", "y");
+    
+   
+    
 const gameController = {
 
     activeSign: "x",
     turnCounter: 1,
+    roundCounter: 0,
+    
     
     switchPlayerTurn: (turnCounter) => {
         if(turnCounter == 1) {
@@ -123,15 +137,62 @@ const gameController = {
     appendSign: (x, y, activeSign) => {
         gameBoard.field[x][y] = activeSign;
         gameBoard.checkForWin(activeSign, x, y);
-        console.log(gameBoard.checkForWin( activeSign, x, y,));
+        
         gameController.switchPlayerTurn(gameController.turnCounter);
-    }
+    },
+    updateScore: (activeSign) => {
+
+        roundFields[gameController.roundCounter] = "X";
+        
+        console.log(player1.playerSign);
+        console.log(player1.playerSign == activeSign);
+        if(player1.playerSign == activeSign){
+            player1Scores[gameController.roundCounter].textContent = "+";
+            player2Scores[gameController.roundCounter].textContent = "-";
+        }
+        else if(player2.playerSign == activeSign){
+            player1Scores[gameController.roundCounter].textContent = "-";
+            player2Scores[gameController.roundCounter].textContent = "+";
+        }
+        else {
+
+        }
+        gameController.roundCounter += 1;
+
+    },
+
 }
 
-const Marc = playerMaker("Marco", "x");
-const King = playerMaker("King", "y");
 
-for( let i = 0; i < 9; i++){
+
+function allowPlaying(){
+
+    fieldsArray.forEach((field) => {
+    field.addEventListener('click', fieldProp, false);
+
+
+    })
+}
+var fieldProp = function(e) {
+    const x = e.target.getAttribute('data-x');
+    const y = e.target.getAttribute('data-y');
+
+
+    this.textContent = gameController.activeSign;
+    gameController.appendSign(x, y, gameController.activeSign);
+    console.log(gameBoard.field);
+    this.removeEventListener('click', fieldProp, false);
+}
+function disablePlaying(){
+    fieldsArray.forEach((field) => {
+        field.removeEventListener('click', fieldProp, false);
+    
+    
+        })
+
+}
+
+/* for( let i = 0; i < 9; i++){
 
     fields[i].addEventListener('click', (e) => {
         const x = e.target.getAttribute('data-x');
@@ -145,9 +206,10 @@ for( let i = 0; i < 9; i++){
 
 
     })
-}
+} */
+allowPlaying();
 console.log(gameBoard.field);
-console.log(gameBoard.checkForWin("x", 1, 1));
+
 
 
 
