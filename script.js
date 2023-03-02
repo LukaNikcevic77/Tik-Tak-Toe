@@ -49,8 +49,8 @@ let gameBoard = {
             
             else {
                 if(x - y == 2){
-                    if(gameBoard.field[1][1] == sign && gameBoard.field[0][2]){
-
+                    if(gameBoard.field[1][1] == sign && gameBoard.field[0][2] == sign){
+                        console.log("I chechked if x - y == 2");
                         gameBoard.hits = 2;
                     }
                     
@@ -66,22 +66,26 @@ let gameBoard = {
              if(y - 2 > -1) {
                 if(gameBoard.field[x][1] == sign && gameBoard.field[x][0] == sign){
                     gameBoard.hits = 2;
+                    
                 }
              }
              else if ( y + 2 < 3){
                 if(gameBoard.field[x][1] == sign && gameBoard.field[x][2] == sign){
                     gameBoard.hits = 2;
+                    
                 }
              }
             // Checks top and bottom
             if(x - 2 > - 1) {
                 if(gameBoard.field[1][y] == sign && gameBoard.field[0][y] == sign){
                     gameBoard.hits = 2;
+                    
                 }
             }
             else if(x + 2 < 3) {
                 if(gameBoard.field[1][y] == sign && gameBoard.field[2][y] == sign){
                     gameBoard.hits = 2;
+                    
                 }
             }
             if(gameBoard.hits == 2){
@@ -142,7 +146,7 @@ const gameController = {
     },
     updateScore: (activeSign) => {
 
-        roundFields[gameController.roundCounter] = "X";
+        roundFields[gameController.roundCounter].textContent = "X";
         
         console.log(player1.playerSign);
         console.log(player1.playerSign == activeSign);
@@ -159,7 +163,13 @@ const gameController = {
         }
         gameController.roundCounter += 1;
 
+        setTimeout(() => {
+            restartBoard();
+        }, 1000)
+        
     },
+
+    
 
 }
 
@@ -189,6 +199,21 @@ function disablePlaying(){
     
     
         })
+
+}
+
+function restartBoard(){
+    fieldsArray.forEach((field) => {
+        
+        field.textContent = '';
+        })
+        board.style.backgroundColor = 'transparent';
+        gameBoard.field = [
+            ["a", "a", "a"],
+            ["a", "a", "a"],
+            ["a", "a", "a"]
+        ]
+    allowPlaying();
 
 }
 
