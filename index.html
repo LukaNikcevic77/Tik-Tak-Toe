@@ -5,11 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <script src="script.js" defer></script>
     
     <title>Tic Tac Toe</title>
 </head>
 <body>
+    <div class="setnames">
+        <form id="forma">
+            <input type="text" name="player1" id="player1name" minlength="3" maxlength="6" placeholder="Player 1 name" required>
+            <input type="text" name="player2font" id="player2name" minlength="3" maxlength="6" placeholder="Player 2 name" required>
+            <button type= "button" class="NamesSet">
+                <i class="fa-solid fa-fan"></i>
+            </button>
+            
+        </form>
+    </div>
     <header>
         <span>
             <h1>Tic-Tac-Toe</h1>
@@ -17,6 +28,7 @@
         </span>
     </header>
     <main>
+        
         <div class="board" id="board">
             <div class ="field" data-x="0" data-y="0"></div>
             <div class ="field" data-x="0" data-y="1"></div>
@@ -30,10 +42,10 @@
         </div>
     </main>
     <footer>
-    <div class="scoreSheetNaming">
-        <p>Round: </p>
-        <p>Player 1: </p>
-        <p>Player 2: </p>
+    <div id="scoreSheetNaming scorestyle">
+        <p >Round   </p>
+        <p id="scoreSheetNamingp1">Player 1 : </p>
+        <p id="scoreSheetNamingp2">Player 2 : </p>
     </div>
     <div class="rnd">
         <p class="rndC">a</p>
@@ -120,9 +132,9 @@
         <p class="p2Score">a</p>
     </div>
     <div class="rnd">
-        <p>X</p>
-        <p>a</p>
-        <p>a</p>
+        <p class="rndC">a</p>
+        <p class="p1Score">a</p>
+        <p class="p2Score">a</p>
     </div>
     </footer>
 </body>

@@ -14,6 +14,147 @@ body {
   min-width: 100%;
   overflow-y: hidden;
 }
+body .setnames {
+  position: absolute;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(131, 131, 131, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .setnames form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 45vh;
+  width: 30vw;
+  background-color: white;
+  border-radius: 30px 30px 0px 30px;
+}
+@media (max-width: 768px) {
+  body .setnames form {
+    width: 50vw;
+  }
+}
+@media (max-width: 425px) {
+  body .setnames form {
+    width: 80vw;
+  }
+}
+@media (max-width: 375px) {
+  body .setnames form {
+    width: 80vw;
+  }
+}
+@media (max-width: 320px) {
+  body .setnames form {
+    width: 80vw;
+  }
+}
+body .setnames form input:not([type=submit]) {
+  margin-bottom: 2rem;
+  background-color: rgba(155, 153, 153, 0.6);
+  color: rgba(0, 0, 0, 0.692);
+  font-size: 2.6rem;
+  padding-left: 1rem;
+  height: 10vh;
+  width: 25vw;
+  border: none;
+  border-radius: 20px;
+}
+@media (max-width: 768px) {
+  body .setnames form input:not([type=submit]) {
+    width: 40vw;
+    font-size: 2rem;
+  }
+}
+@media (max-width: 425px) {
+  body .setnames form input:not([type=submit]) {
+    width: 65vw;
+  }
+}
+@media (max-width: 375px) {
+  body .setnames form input:not([type=submit]) {
+    width: 65vw;
+  }
+}
+@media (max-width: 320px) {
+  body .setnames form input:not([type=submit]) {
+    width: 65vw;
+    font-size: 1.5rem;
+  }
+}
+body .setnames form button {
+  height: 10vh;
+  width: 10vh;
+  border: none;
+  border-radius: 20px;
+  transition: width 1s ease-in-out;
+  background-color: blue;
+}
+@media (max-width: 320px) {
+  body .setnames form button {
+    width: 7vh;
+    height: 7vh;
+  }
+}
+body .setnames form button:hover {
+  cursor: pointer;
+  background-color: rgb(140, 140, 255);
+  width: 25vw;
+  border-radius: 20px;
+}
+@media (max-width: 768px) {
+  body .setnames form button:hover {
+    width: 40vw;
+  }
+}
+@media (max-width: 425px) {
+  body .setnames form button:hover {
+    width: 65vw;
+  }
+}
+@media (max-width: 375px) {
+  body .setnames form button:hover {
+    width: 65vw;
+  }
+}
+@media (max-width: 320px) {
+  body .setnames form button:hover {
+    width: 65vw;
+  }
+}
+body .setnames form button:hover i {
+  transform: rotate(360deg);
+}
+body .setnames form button i {
+  font-size: 2vw;
+  color: whitesmoke;
+  transition: transform 1s ease-in-out;
+}
+@media (max-width: 768px) {
+  body .setnames form button i {
+    font-size: 3vw;
+  }
+}
+@media (max-width: 425px) {
+  body .setnames form button i {
+    font-size: 6vw;
+  }
+}
+@media (max-width: 375px) {
+  body .setnames form button i {
+    font-size: 6vw;
+  }
+}
+@media (max-width: 320px) {
+  body .setnames form button i {
+    font-size: 6vw;
+  }
+}
 body header {
   display: flex;
   align-items: center;
@@ -105,7 +246,15 @@ body footer {
   bottom: 0;
   width: 100%;
   min-height: clamp(120px, 10vh, 20vh);
-  background-color: red;
+  background-color: rgba(185, 185, 185, 0.781);
+  box-shadow: 0px 0px 10px 5px black;
+  border-radius: 20px 20px 0px 0px;
+}
+body footer .scorestyle {
+  margin-right: 250px;
+}
+body footer .rnd {
+  border-right: 2px solid black;
 }
 @media (min-width: 1050px) {
   body footer {
@@ -124,8 +273,10 @@ body footer div {
   justify-content: center;
   font-size: 1.5vw;
   min-width: 5vw;
+  border-right: 2px solid black;
 }
 body footer div p {
+  padding-right: 15px;
   padding-bottom: 0.4rem;
 }
 body footer div p:nth-child(1) {
@@ -146,4 +297,23 @@ body footer div:nth-child(1) p:nth-child(1) {
 }
 body footer div:nth-child(1) p:nth-child(3) {
   padding-bottom: 0rem;
+}
+
+.hideIt {
+  visibility: hidden;
+}
+
+@keyframes playButton {
+  20% {
+    border-radius: 50%;
+  }
+  21% {
+    border-radius: 25%;
+  }
+  22% {
+    border-radius: 0%;
+  }
+  100% {
+    width: 25vw;
+  }
 }/*# sourceMappingURL=style.css.map */
