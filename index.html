@@ -7,10 +7,18 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <script src="script.js" defer></script>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <title>Tic Tac Toe</title>
 </head>
 <body>
+    <div class="playerWon hideIt">
+        <div class="scoreboard">
+            <p class="whoWon">Luka won with 13 points compared to Lukas 15</p>
+            <button class="resetGame"><i class="fa-solid fa-circle-notch"></i></button>
+        </div>
+    </div>
     <div class="setnames">
         <form id="forma">
             <input type="text" name="player1" id="player1name" minlength="3" maxlength="6" placeholder="Player 1 name" required>
@@ -42,6 +50,7 @@
         </div>
     </main>
     <footer>
+        
     <div id="scoreSheetNaming scorestyle">
         <p >Round   </p>
         <p id="scoreSheetNamingp1">Player 1 : </p>

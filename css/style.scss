@@ -1,6 +1,7 @@
 * {
     padding: 0px;
     margin: 0px;
+    font-family: 'Roboto', sans-serif;
 }
 
 html {
@@ -128,6 +129,73 @@ body {
             }
         }
     }
+
+    .playerWon {
+        position: absolute;
+        z-index: 5;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(131, 131, 131, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .scoreboard {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 25vh;
+            width: 70vw;
+            font-size: 3rem;
+            background-color: white;
+            border-radius: 30px 30px 30px 30px;
+            box-shadow: 0px 0px 10px 5px;
+
+            button {
+                margin-top: 3vh;
+                padding: 20px;
+                border: none;
+                height: 4rem;
+                width: 4rem;
+                border-radius: 50%;
+                text-align: center;
+
+                &:hover {
+                    background-color: rgb(212, 212, 212);
+                    i {
+                        transform: rotate(360deg);
+                        
+                    }
+                }
+
+                i {
+                    transition: transform 0.5s ease-in-out;
+                    
+                    
+                }
+            }
+            @media (max-width: 1280px) {
+                font-size: 2rem;
+            }
+            @media (max-width: 768px) {
+            width: 90vw;
+            }
+            @media (max-width: 425px) {
+                width: 90vw;
+                font-size: 1rem;
+            }
+            @media (max-width: 375px) {
+                width: 90vw;
+                font-size: 1rem;
+            }
+            @media (max-width: 320px) {
+                width: 90vw;
+                font-size: 0.8rem;
+            }
+        }
+
+    }   
     header {
         display: flex;
         align-items: center;
@@ -168,14 +236,52 @@ body {
         
         .board {
             display: grid;
+            text-align: center;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
             width: 30vw;
             height: 30vw;
+            text-align: center;
+            
+            @media (max-width: 768px) {
 
+                width: 60vw;
+                height: 60vw;
+            }
             @media (max-width: 425px) {
                 width: 60vw;
                 height: 60vw;
+                
+            }
+
+            div {
+                
+                text-align: center;
+                font-size: 6rem;
+                
+                @media (min-width: 320px) {
+                    font-size: 3rem;
+                    
+                }
+
+                @media (min-width: 425px)  {
+                    font-size: 4rem;
+                }
+
+                @media (min-width: 768px) {
+                    font-size: 6rem;
+                    
+                }
+                
+                @media (min-width: 1080px) {
+
+                    font-size: 7rem;
+                }
+                @media (min-width: 2560px) {
+                    
+                    font-size: 12rem;
+                    
+                }
                 
             }
             
@@ -236,6 +342,11 @@ body {
         
         .scorestyle {
             margin-right: 250px;
+
+            
+                
+            
+        
         }
         .rnd {
             border-right: 2px solid black;
@@ -245,11 +356,16 @@ body {
         @media (min-width: 1050px) {
             min-height: 15vh;
         }
+        @media (max-width: 768px) {
+            visibility: hidden;
+        }
 
         @media (max-width: 425px) {
             visibility: hidden;
             
         }
+
+        
 
         div {
             display: flex;
@@ -262,6 +378,8 @@ body {
             p {
                 padding-right: 15px;
                  padding-bottom: 0.4rem;
+
+                 
                  &:nth-child(1) {
                     padding-bottom: 0.8rem;
                 }
@@ -308,6 +426,16 @@ body {
     100% {
         width: 25vw;
     }
+}
+
+.greenBox {
+    box-shadow: 0px 0px 25px 5px green;
+    transition: all 0.5s ease-in-out;
+
+}
+.redBox {
+    box-shadow: 0px 0px 25px 5px red;
+    transition: all 0.5s ease-in-out;
 }
 
 

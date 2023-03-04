@@ -13,15 +13,19 @@ const fieldsArray = [...fields];
 const roundsFieldsArray = [...roundFields];
 const player1ScoresArray = [...player1Scores];
 const player2ScoresArray = [...player2Scores];
-const namesSetButton = document.querySelector("button");
-console.log(board);
-console.log(roundFields);
-console.log(background);
+const namesSetButton = document.querySelector(".NamesSet");
+const winnerDisplayWindow = document.querySelector('.playerWon');
+const winnerText = document.querySelector('.whoWon');
+const resetGameButton = document.querySelector('.resetGame');
 
 namesSetButton.addEventListener('click', (e) => {
     if(p1nameInput.value.length > 2 && p2nameInput.value.length > 2 && p1nameInput.value.length < 7 && p2nameInput.value.length < 7) {
         setNames(p1nameInput, p2nameInput);
     }
+})
+
+resetGameButton.addEventListener('click', (e) => {
+    window.location.reload();
 })
 
 let gameBoard = {
@@ -124,14 +128,15 @@ let gameBoard = {
              }
             if(gameBoard.hits == 2){
                 console.log("YEy we got diagonal win broski");
-                board.style.backgroundColor = "green";
+                
+                board.classList.add("greenBox");
                 disablePlaying();
                 
                 gameController.updateScore(sign);
             }
             else if(gameBoard.hits != 2 && gameController.fullfields == 8){
                 console.log("Its a draw bitch");
-                board.style.backgroundColor = "orange";
+                board.classList.add("redBox");
                 disablePlaying();
                 
                 gameController.updateScore("draw");
@@ -181,7 +186,7 @@ const gameController = {
     
     switchPlayerTurn: (turnCounter) => {
         if(turnCounter == 1) {
-            gameController.activeSign = "y";
+            gameController.activeSign = "o";
             gameController.turnCounter = 2;
         }
         else {
@@ -230,7 +235,12 @@ const gameController = {
             DisplayFinalResults(player1, player2);
             gameController.roundCounter = 0;
         }
-            restartBoard();
+        else {
+            board.classList.remove('greenBox');
+            board.classList.remove('redBox');
+            restartBoard(); 
+        }
+            
         }, 1000)
         
     },
@@ -242,7 +252,8 @@ const gameController = {
 function DisplayFinalResults(player1, player2){
 
     if(player1.wonRounds > player2.wonRounds) {
-        alert(player1.name + " won with " + player1.wonRounds + " rounds to " + player2.wonRounds + " that " + player2.name + " had!");
+        winnerDisplayWindow.classList.remove('hideIt');
+        winnerText.textContent = player1.name + " won with " + player1.wonRounds + " to " + player2.wonRounds + " that " + player2.name + " had";
         player1ScoresArray.forEach((player1ScoreField) => {
             player1ScoreField.textContent = "a";
         })
@@ -254,7 +265,8 @@ function DisplayFinalResults(player1, player2){
         })
     }
     else if( player2.wonRounds > player1.wonRounds) {
-        alert(player2.name + " won with " + player2.wonRounds + " rounds to " + player1.wonRounds + " that " + player1.name + " had!");
+        winnerDisplayWindow.classList.remove('hideIt');
+        winnerText.textContent = player2.name + " won with " + player2.wonRounds + " to " + player1.wonRounds + " that " + player1.name + " had";
         player1ScoresArray.forEach((player1ScoreField) => {
             player1ScoreField.textContent = "a";
         })
@@ -267,7 +279,9 @@ function DisplayFinalResults(player1, player2){
     }
 
     else {
-        alert("Its a tigh with both players having " + player1.wonRounds);
+        winnerDisplayWindow.classList.remove('hideIt');
+        winnerText.textContent = "Its a tigh with both players having " + player1.wonRounds
+        
         player1ScoresArray.forEach((player1ScoreField) => {
             player1ScoreField.textContent = "a";
         })
@@ -300,6 +314,7 @@ var fieldProp = function(e) {
     this.removeEventListener('click', fieldProp, false);
 }
 function disablePlaying(){
+    
     fieldsArray.forEach((field) => {
         field.removeEventListener('click', fieldProp, false);
     
